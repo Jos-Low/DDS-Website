@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Request Received — Dirty Deeds Services</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .ty { min-height: 80vh; display: flex; align-items: center; justify-content: center; padding: 4rem 1rem; text-align: center; }
+    .ty__inner { max-width: 34rem; }
+    .ty__icon { width: 64px; height: 64px; border-radius: 50%; background: rgba(77,184,122,.12); border: 2px solid rgba(77,184,122,.35); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; color: #4db87a; animation: pop .45s cubic-bezier(.175,.885,.32,1.275) both; }
+    @keyframes pop { from { transform: scale(.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .ty__title { font-family: var(--font-d); font-size: clamp(2rem,5vw,3.25rem); font-weight: 900; text-transform: uppercase; letter-spacing: .02em; line-height: 1.05; margin-bottom: .875rem; animation: fu .45s .18s ease both; }
+    .ty__body { font-size: 1rem; color: var(--muted); line-height: 1.65; margin-bottom: 2rem; animation: fu .45s .28s ease both; }
+    .ty__body strong { color: var(--text); }
+    @keyframes fu { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+    .ty__next { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.375rem; margin-bottom: 1.875rem; text-align: left; animation: fu .45s .36s ease both; }
+    .ty__next h2 { font-family: var(--font-d); font-size: .8rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--fire); margin-bottom: .75rem; }
+    .ty__steps { list-style: none; display: flex; flex-direction: column; gap: .625rem; }
+    .ty__steps li { display: flex; align-items: flex-start; gap: .75rem; font-size: .9rem; color: var(--muted); }
+    .ty__steps li::before { content: attr(data-n); flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--fire); color: #fff; font-family: var(--font-d); font-size: .65rem; font-weight: 900; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+    .ty__actions { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; animation: fu .45s .44s ease both; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-main">
+      <a href="index.html" class="logo" aria-label="Dirty Deeds Services home">
+        <span class="logo__dirty">Dirty Deeds</span>
+        <span class="logo__services">Services</span>
+      </a>
+      <a href="tel:+15174140269" style="font-weight:700;text-decoration:none;color:var(--text);font-size:.9rem;">(517) 414-0269</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="ty">
+      <div class="ty__inner">
+        <div class="ty__icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h1 class="ty__title">You're All Set!</h1>
+        <p class="ty__body">We received your request. A Dirty Deeds team member will reach out within <strong>1 business day</strong> to confirm your appointment.<br><br>Your <strong>$100 discount</strong> is reserved when you book your first cleaning.</p>
+
+        <div class="ty__next">
+          <h2>What Happens Next</h2>
+          <ol class="ty__steps">
+            <li data-n="1">We confirm availability in your area and schedule your inspection.</li>
+            <li data-n="2">A certified tech visits at a time that works for you.</li>
+            <li data-n="3">You get a full written report and quote — no pressure.</li>
+            <li data-n="4">Book and your $100 new-client discount is applied automatically.</li>
+          </ol>
+        </div>
+
+        <div class="ty__actions">
+          <a href="index.html" class="btn btn--ghost">← Back to Home</a>
+          <a href="tel:+15174140269" class="btn btn--fire">Call (517) 414-0269</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p>© 2026 Dirty Deeds Services. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
