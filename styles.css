@@ -32,6 +32,29 @@
   .skip-link:focus { top: 1rem; }
   .container { width: var(--container); margin-inline: auto; }
   
+  .upload-container {
+  border: 2px dashed var(--border);
+  padding: 1rem;
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.03);
+  transition: border-color 0.3s ease;
+  }
+
+  .upload-container:hover {
+    border-color: var(--fire);
+  }
+
+  #photos {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  /* Ensure the text below it looks right */
+  .ff__group p {
+    line-height: 1.4;
+  }
   /* Buttons */
   .btn {
     display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
@@ -98,7 +121,7 @@
   
   @media (min-width: 960px) {
     .nav__item--has-sub { position: relative; }
-    .nav__sub { position: absolute; top: calc(100% + 4px); left: 0; min-width: 220px; padding: .5rem; margin: 0; border: 0; border-left: 0; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); display: none; z-index: 50; }
+    .nav__sub { position: absolute; top: calc(100%); left: 0; min-width: 220px; padding: .5rem; margin: 0; border: 0; border-left: 0; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); display: none; z-index: 50; }
     .nav__item--has-sub:hover .nav__sub, .nav__item--has-sub:focus-within .nav__sub { display: block; }
   }
   
@@ -311,3 +334,177 @@
   .reveal.visible { opacity: 1; transform: none; }
   
   @media (max-width: 959px) { .header-main { flex-wrap: wrap; } .nav { flex-basis: 100%; order: 3; } }
+  /* --- Expertise Grid --- */
+.service-image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.service-card {
+  background: #161b22;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #30363d;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card__image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.service-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service-card__content {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.service-card__content h3 {
+  color: #f0f6fc;
+  margin-bottom: 0.5rem;
+}
+
+/* --- Reviews Split Layout --- */
+.reviews-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 960px) {
+  .reviews-split {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+}
+
+.reviews-split__image img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  border: 1px solid #30363d;
+}
+
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+/* --- CLEANED SOCIAL ICONS --- */
+.nav__social, .footer__social {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 15px !important;
+  list-style: none !important;
+  padding: 0 !important;
+}
+
+.social-link {
+  display: inline-flex !important;
+  background: transparent !important;
+  border: none !important;
+  transition: transform 0.2s ease;
+}
+
+.social-link:hover {
+  transform: translateY(-2px);
+}
+
+/* --- EXPERTISE GRID --- */
+.service-image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.service-card {
+  background: var(--bg-surface);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.3s ease;
+}
+
+.service-card:hover {
+  border-color: var(--fire);
+}
+
+.service-card__image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.service-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service-card__content {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+/* --- REVIEWS SPLIT --- */
+.reviews-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 960px) {
+  .reviews-split {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+}
+
+/* --- PHOTO UPLOAD STYLING --- */
+.upload-container {
+  border: 2px dashed var(--border);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.02);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.upload-container:hover {
+  border-color: var(--fire);
+  background: rgba(224,126,27,0.05);
+}
+
+/* Stylizing the actual 'Choose Files' button */
+input[type="file"]::file-selector-button {
+  background: var(--fire);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-family: var(--font-d);
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  margin-right: 15px;
+  transition: background 0.2s;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background: var(--fire-hover);
+}
+
+/* Utility classes */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .5s ease, transform .5s ease; }
+.reveal.visible { opacity: 1; transform: none; }

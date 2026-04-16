@@ -14,285 +14,136 @@
   <style>
     .fp { padding: clamp(2.5rem,6vw,4rem) 1rem clamp(3rem,7vw,5rem); }
     .fp__crumb { font-size: .8rem; color: var(--faint); margin-bottom: 1.5rem; max-width: 36rem; margin-inline: auto; }
-    .fp__crumb a { color: var(--fire); text-decoration: none; }
-    .fp__crumb span { margin: 0 .4rem; }
-    .fp__layout { max-width: 28rem; margin-inline: auto; display: flex; flex-direction: column; gap: 1.25rem; align-items: stretch; }
-
-    .fc { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.75rem 1.5rem; }
-    @media (min-width: 480px) { .fc { padding: 1.875rem 1.75rem; } }
-    .fc__kicker {
-      font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
-      text-align: center; margin-bottom: .75rem; line-height: 1.5;
+    .fp__crumb a { color: inherit; text-decoration: none; }
+    .fp__crumb a:hover { color: var(--fire); }
+    .fp__inner { max-width: 36rem; margin: 0 auto; text-align: center; }
+    .fp__title { font-family: var(--font-d); font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; text-transform: uppercase; line-height: 1; margin-bottom: 1rem; }
+    .fp__title span { color: var(--fire); display: block; }
+    .fp__lead { color: var(--muted); font-size: 1.1rem; line-height: 1.5; margin-bottom: 2.5rem; }
+    
+    .ff-wrap { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: clamp(1.5rem, 5vw, 2.5rem); text-align: left; box-shadow: var(--shadow); }
+    .ff { display: grid; gap: 1.25rem; }
+    .ff__group { display: flex; flex-direction: column; gap: .5rem; }
+    .ff__label { font-family: var(--font-d); font-size: .9rem; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; color: var(--muted); }
+    .ff__input { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: .85rem 1rem; color: var(--text); font-family: inherit; font-size: 1rem; transition: border-color .2s, box-shadow .2s; }
+    .ff__input:focus { outline: none; border-color: var(--fire); box-shadow: 0 0 0 3px rgba(224,126,27,0.1); }
+    
+    /* Photo Upload Styling */
+    .upload-container {
+      border: 2px dashed var(--border);
+      padding: 1rem;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.03);
+      transition: border-color 0.3s ease;
     }
-    .fc__kicker strong { color: var(--fire); font-weight: 800; }
-    .fc__tag { font-size: .7rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--fire); margin-bottom: .35rem; text-align: center; }
-    .fc__title { font-family: var(--font-d); font-size: clamp(1.65rem,4vw,2.15rem); font-weight: 900; text-transform: uppercase; letter-spacing: .02em; line-height: 1.08; margin-bottom: .5rem; text-align: center; }
-    .fc__lead { font-size: .875rem; color: var(--muted); margin-bottom: 1.35rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border); line-height: 1.55; text-align: center; }
-
-    .fg { margin-bottom: 1rem; }
-    .fg label { display: block; font-weight: 600; font-size: .875rem; margin-bottom: .35rem; }
-    .fg .req { color: var(--fire); margin-left: 2px; }
-    .fg .hint { font-weight: 400; color: var(--faint); font-size: .775rem; }
-    .fi, .fs, .ft {
-      width: 100%; padding: .675rem .875rem; font: 400 1rem/1.5 var(--font-b); color: var(--text);
-      background: var(--bg); border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius);
-      transition: border-color .15s, box-shadow .15s; appearance: none;
+    .upload-container:hover {
+      border-color: var(--fire);
     }
-    .fi:focus, .fs:focus, .ft:focus { outline: none; border-color: var(--fire); box-shadow: 0 0 0 3px rgba(224,126,27,.15); }
-    .fs { background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238a9bb0' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right .875rem center; padding-right: 2.5rem; }
-    .fs option { background: var(--bg-card); }
-    .ft { min-height: 5rem; resize: vertical; }
-    .fg2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    @media (max-width: 520px) { .fg2 { grid-template-columns: 1fr; } }
-
-    .fsub { width: 100%; margin-top: .25rem; padding: .95rem 1.5rem; font-family: var(--font-d); font-size: 1.05rem; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; background: var(--fire); color: #fff; border: none; border-radius: var(--radius); cursor: pointer; transition: background .18s, box-shadow .18s, transform .12s; box-shadow: 0 4px 18px rgba(224,126,27,.3); display: flex; align-items: center; justify-content: center; gap: .5rem; }
-    .fsub:hover { background: var(--fire-hover); }
-    .fsub:active { transform: scale(.98); }
-    .fc__note { margin-top: .875rem; font-size: .775rem; color: var(--faint); text-align: center; }
-    .fc__alt { margin-top: 1.125rem; padding-top: 1.125rem; border-top: 1px solid var(--border); text-align: center; font-size: .875rem; color: var(--muted); }
-    .fc__alt a { color: var(--fire); font-weight: 700; text-decoration: none; }
-    .fc__alt a:hover { text-decoration: underline; }
-
-    .fp-compact {
-      text-align: center; padding: 1rem 1.125rem; background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
-      font-size: .8125rem; color: var(--muted); line-height: 1.55;
+    #photos {
+      background: transparent;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      width: 100%;
     }
-    .fp-compact__badges { display: flex; flex-wrap: wrap; justify-content: center; gap: .4rem .5rem; margin-bottom: .65rem; }
-    .fp-compact__badges span {
-      font-family: var(--font-d); font-size: .62rem; font-weight: 900; letter-spacing: .07em; text-transform: uppercase;
-      background: var(--bg-card); border: 1px solid var(--border); padding: .2rem .45rem; border-radius: 4px; color: var(--text);
-    }
-    .fp-compact__badges .fp-b--fire { border-color: var(--border-fire); color: var(--fire); }
-    .fp-compact__badges .fp-b--gold { border-color: rgba(212,167,40,.35); color: var(--gold); }
-    .fp-compact__line { margin: 0 0 .5rem; }
-    .fp-compact__call { margin: 0; font-family: var(--font-d); font-size: 1.05rem; font-weight: 900; letter-spacing: .03em; }
-    .fp-compact__call a { color: var(--text); text-decoration: none; }
-    .fp-compact__call a:hover { color: var(--fire); }
-    .fp-compact__hours { margin: .25rem 0 0; font-size: .72rem; color: var(--faint); }
+
+    .btn--submit { border: none; cursor: pointer; justify-content: center; font-size: 1.1rem; padding-block: 1rem; margin-top: .5rem; }
+    .ff__note { font-size: .8rem; color: var(--faint); text-align: center; margin-top: 1.25rem; line-height: 1.4; }
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
 
-  <div class="top-bar">
-    <div class="container top-bar__inner">
-      <span class="top-bar__badge">⚡ 5 new client slots remaining this month</span>
-      <div class="top-bar__contact">
-        <a href="tel:+15174140269" class="top-bar__link top-bar__phone">(517) 414-0269</a>
-      </div>
-    </div>
-  </div>
-
-  <header class="site-header">
-    <div class="container header-main">
-      <a href="index.html" class="logo" aria-label="Dirty Deeds Services home">
+  <header class="site-header" style="position: static; background: var(--bg-surface);">
+    <div class="header-main container">
+      <a href="index.html" class="logo">
         <span class="logo__dirty">Dirty Deeds</span>
         <span class="logo__services">Services</span>
       </a>
-      <nav aria-label="Quick links" style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
-        <a href="index.html" style="font-size:.875rem;font-weight:600;color:var(--muted);text-decoration:none;">← Home</a>
-        <a href="tel:+15174140269" class="btn--nav-cta">Call Now</a>
-      </nav>
+      <a href="tel:+15174140269" class="top-bar__link" style="font-weight: 700;">(517) 414-0269</a>
     </div>
   </header>
 
-  <main id="main">
-    <div class="fp">
+  <main>
+    <section class="fp">
       <div class="container">
         <nav class="fp__crumb" aria-label="Breadcrumb">
-          <a href="index.html">Home</a><span aria-hidden="true">›</span>
-          <a href="index.html#offer">Hood Cleaning Offer</a><span aria-hidden="true">›</span>
-          <span aria-current="page">Free Inspection Request</span>
+          <a href="index.html">Home</a> / <span>Free Inspection</span>
         </nav>
+        
+        <div class="fp__inner">
+          <h1 class="fp__title">Get Your <span>Free Inspection</span></h1>
+          <p class="fp__lead">Certified technicians, bare-metal standards. We’ll assess your system and provide a fixed-price quote within 24 hours.</p>
 
-        <div class="fp__layout">
+          <div class="ff-wrap">
+            <form action="https://formsubmit.co/info@dirtydeedsservices.com" method="POST" class="ff" enctype="multipart/form-data" id="inspection-form">
+              
+              <div class="ff__group">
+                <label for="name" class="ff__label">Full Name</label>
+                <input type="text" id="name" name="name" class="ff__input" placeholder="Your Name" required>
+              </div>
 
-          <div class="fc">
-            <p class="fc__kicker"><strong>Free</strong> exhaust inspection · <strong>$100 off</strong> first cleaning · <strong>No</strong> obligation</p>
-            <p class="fc__tag">Step 1 — Request</p>
-            <h1 class="fc__title">Free Exhaust Inspection</h1>
-            <p class="fc__lead">Takes about a minute. We’ll confirm a time, then send a full report and quote.</p>
+              <div class="ff__group">
+                <label for="biz" class="ff__label">Business Name</label>
+                <input type="text" id="biz" name="business" class="ff__input" placeholder="Restaurant or Facility Name" required>
+              </div>
 
-            <!-- Submissions are emailed via FormSubmit (confirm the address on first send). Change lowdenj1@msu.edu or switch service when you go live. -->
-            <form action="https://formsubmit.co/ajax/lowdenj1@msu.edu" method="POST" id="form" novalidate>
-              <input type="hidden" name="_subject" value="Free exhaust inspection request — Dirty Deeds Services" />
-              <input type="hidden" name="_template" value="table" />
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="visually-hidden" aria-hidden="true" />
+              <div class="ff__group">
+                <label for="email" class="ff__label">Email Address</label>
+                <input type="email" id="email" name="email" class="ff__input" placeholder="email@example.com" required>
+              </div>
 
-              <div class="fg2">
-                <div class="fg">
-                  <label for="fn">First name <span class="req" aria-label="required">*</span></label>
-                  <input class="fi" type="text" id="fn" name="first_name" autocomplete="given-name" required placeholder="Zack" />
+              <div class="ff__group">
+                <label for="phone" class="ff__label">Phone Number</label>
+                <input type="tel" id="phone" name="phone" class="ff__input" placeholder="(517) 000-0000" required>
+              </div>
+
+              <div class="ff__group">
+                <label for="message" class="ff__label">Service Needed / Questions</label>
+                <textarea id="message" name="message" class="ff__input" rows="3" placeholder="Tell us about your hood system, fleet size, or specific needs..."></textarea>
+              </div>
+
+              <div class="ff__group">
+                <label class="ff__label">Upload Photos (Max 3)</label>
+                <div class="upload-slots" style="display: grid; gap: 10px;">
+                  <input type="file" name="attachment1" accept="image/*" class="ff__input">
+                  <input type="file" name="attachment2" accept="image/*" class="ff__input">
+                  <input type="file" name="attachment3" accept="image/*" class="ff__input">
                 </div>
-                <div class="fg">
-                  <label for="ln">Last name <span class="req" aria-label="required">*</span></label>
-                  <input class="fi" type="text" id="ln" name="last_name" autocomplete="family-name" required placeholder="Smith" />
-                </div>
               </div>
 
-              <div class="fg">
-                <label for="bn">Business / restaurant name <span class="req" aria-label="required">*</span></label>
-                <input class="fi" type="text" id="bn" name="business" required placeholder="Joe's Bar &amp; Grill" />
-              </div>
+              <input type="hidden" name="_subject" value="New Inspection Request - Dirty Deeds Services">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="false">
 
-              <div class="fg2">
-                <div class="fg">
-                  <label for="ph">Phone <span class="req" aria-label="required">*</span></label>
-                  <input class="fi" type="tel" id="ph" name="phone" autocomplete="tel" required placeholder="(517) 555-0100" />
-                </div>
-                <div class="fg">
-                  <label for="em">Email</label>
-                  <input class="fi" type="email" id="em" name="email" autocomplete="email" placeholder="you@restaurant.com" />
-                </div>
-              </div>
-
-              <div class="fg">
-                <label for="cy">City / Location <span class="req" aria-label="required">*</span></label>
-                <input class="fi" type="text" id="cy" name="city" required placeholder="Lansing, MI" />
-              </div>
-
-              <div class="fg">
-                <label for="kt">Kitchen type <span class="req" aria-label="required">*</span></label>
-                <select class="fs" id="kt" name="kitchen_type" required>
-                  <option value="" disabled selected>Select…</option>
-                  <option>Full-service restaurant</option>
-                  <option>Fast food / QSR</option>
-                  <option>Bar &amp; grill</option>
-                  <option>Café / bakery</option>
-                  <option>Catering operation</option>
-                  <option>Institutional kitchen</option>
-                  <option>Food truck / concession</option>
-                  <option>Other</option>
-                </select>
-              </div>
-
-              <div class="fg">
-                <label for="lc">Last professional cleaning <span class="hint">(best guess)</span></label>
-                <select class="fs" id="lc" name="last_cleaned">
-                  <option value="" disabled selected>Select…</option>
-                  <option>Never / unsure</option>
-                  <option>More than 12 months ago</option>
-                  <option>6–12 months ago</option>
-                  <option>3–6 months ago</option>
-                  <option>Less than 3 months ago</option>
-                </select>
-              </div>
-
-              <div class="fg">
-                <label for="av">Preferred visit time <span class="hint">(overnight &amp; early AM available)</span></label>
-                <select class="fs" id="av" name="availability">
-                  <option value="" disabled selected>Select…</option>
-                  <option>Overnight (midnight – 5 AM)</option>
-                  <option>Early morning (5 AM – 9 AM)</option>
-                  <option>Morning (9 AM – noon)</option>
-                  <option>Afternoon (noon – 5 PM)</option>
-                  <option>Flexible</option>
-                </select>
-              </div>
-
-              <div class="fg">
-                <label for="nt">Anything else? <span class="hint">(optional)</span></label>
-                <textarea class="ft" id="nt" name="notes" placeholder="Multiple hoods, specific concerns, preferred days…"></textarea>
-              </div>
-
-              <button type="submit" class="fsub">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                Send My Inspection Request
-              </button>
-              <p class="fc__note">We will never share or sell your information.</p>
+              <button type="submit" class="btn btn--fire btn--submit">Send Request</button>
+              
+              <p class="ff__note">By clicking "Send Request", you agree to be contacted via phone or email regarding your quote. We respect your privacy.</p>
             </form>
-
-            <div class="fc__alt">
-              Prefer to call? <a href="tel:+15174140269">(517) 414-0269</a> — 24/7
-            </div>
           </div>
-
-          <div class="fp-compact" aria-label="Offer summary">
-            <div class="fp-compact__badges">
-              <span class="fp-b--fire">Free inspection</span>
-              <span>Written quote</span>
-              <span class="fp-b--gold">$100 off 1st clean</span>
-            </div>
-            <p class="fp-compact__line">NFPA 96 certified · Insured · Michigan-owned</p>
-            <p class="fp-compact__call"><a href="tel:+15174140269">(517) 414-0269</a></p>
-            <p class="fp-compact__hours">24/7 — All Day Every Day</p>
-          </div>
-
         </div>
       </div>
-    </div>
+    </section>
   </main>
 
   <footer class="site-footer">
     <div class="footer__bottom">
-      <div class="container footer__bottom-inner">
-        <p>© 2026 Dirty Deeds Services. All rights reserved.</p>
-        <p><a href="index.html" style="color:var(--faint);text-decoration:none;">← Back to Home</a></p>
+      <div class="container" style="text-align: center;">
+        <p>&copy; 2026 Dirty Deeds Services. Michigan's Hood Cleaning Pros.</p>
       </div>
     </div>
   </footer>
 
   <script>
-    (function () {
-      var form = document.getElementById('form');
-      if (!form) return;
-      var submitBtn = form.querySelector('.fsub');
-      var submitLabel = submitBtn ? submitBtn.innerHTML : '';
+    // Simple form handling to show "Sending..." state
+    const form = document.getElementById('inspection-form');
+    const btn = form.querySelector('.btn--submit');
 
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var ok = true;
-        form.querySelectorAll('[required]').forEach(function (f) {
-          var empty = f.type === 'checkbox' || f.type === 'radio' ? !f.checked : !String(f.value || '').trim();
-          if (empty) {
-            ok = false;
-            f.style.borderColor = '#e24b4a';
-            f.style.boxShadow = '0 0 0 3px rgba(226,75,74,.15)';
-            var clear = function () { f.style.borderColor = ''; f.style.boxShadow = ''; };
-            f.addEventListener('input', clear, { once: true });
-            f.addEventListener('change', clear, { once: true });
-          }
-        });
-        if (!ok) return;
-
-        if (submitBtn) {
-          submitBtn.disabled = true;
-          submitBtn.setAttribute('aria-busy', 'true');
-          submitBtn.textContent = 'Sending…';
-        }
-
-        var fd = new FormData(form);
-        fetch(form.getAttribute('action'), {
-          method: 'POST',
-          body: fd,
-          headers: { Accept: 'application/json' }
-        })
-          .then(function (r) { return r.json().catch(function () { return {}; }); })
-          .then(function (data) {
-            if (data.success === true || data.success === 'true') {
-              window.location.href = 'thank-you.html';
-              return;
-            }
-            var msg = (data && data.message) ? String(data.message) : '';
-            window.alert(
-              msg
-                ? msg
-                : 'We could not send the form. If this is your first time, check lowdenj1@msu.edu for a FormSubmit activation link. You can also call (517) 414-0269.'
-            );
-          })
-          .catch(function () {
-            window.alert('Network error — please try again or call (517) 414-0269.');
-          })
-          .finally(function () {
-            if (submitBtn) {
-              submitBtn.disabled = false;
-              submitBtn.removeAttribute('aria-busy');
-              submitBtn.innerHTML = submitLabel;
-            }
-          });
-      });
-    })();
+    form.addEventListener('submit', () => {
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      btn.style.opacity = '0.7';
+    });
   </script>
+
 </body>
 </html>
