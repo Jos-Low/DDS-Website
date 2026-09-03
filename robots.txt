@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Conversion & tracking pages — no SEO value, block crawling
+Disallow: /google-ads-restaurants/
+Disallow: /thank-you/
+
+Sitemap: https://dirtydeedsservices.com/sitemap.xml

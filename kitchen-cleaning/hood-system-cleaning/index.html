@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Professional Kitchen Hood Cleaning | Dirty Deeds Services Michigan</title>
+  <meta name="description" content="Professional kitchen hood cleaning that keeps you safe, compliant, and running. Complete exhaust system cleaning with photo documentation and NFPA-compliant service." />
+  <link rel="canonical" href="https://dirtydeedsservices.com/kitchen-cleaning/hood-system-cleaning/" />
+  <meta name="theme-color" content="#0d1117" />
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Professional Kitchen Hood Cleaning Michigan | Dirty Deeds Services" />
+  <meta property="og:description" content="NFPA-compliant hood, duct, and fan cleaning with before/after photo documentation for Michigan commercial kitchens." />
+  <meta property="og:url" content="https://dirtydeedsservices.com/kitchen-cleaning/hood-system-cleaning/" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "name": "Professional Kitchen Hood Cleaning",
+        "description": "Complete hood, duct, and exhaust fan cleaning with NFPA-compliant documentation for Michigan restaurants and commercial kitchens.",
+        "serviceType": "Commercial hood cleaning",
+        "provider": { "@type": "LocalBusiness", "name": "Dirty Deeds Services", "telephone": "+1-517-414-0269", "url": "https://dirtydeedsservices.com/" },
+        "areaServed": { "@type": "State", "name": "Michigan" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://dirtydeedsservices.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Hood Cleaning", "item": "https://dirtydeedsservices.com/kitchen-cleaning/hood-system-cleaning/" }
+        ]
+      }
+    ]
+  }
+  </script>
+  <style>
+    /* ── Sticky crossfade background ──────────────────────────── */
+    .hood-scroll {
+      position: relative;
+      isolation: isolate;
+    }
+    .hood-bg {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      height: 100dvh;
+      margin-bottom: -100vh;
+      margin-bottom: -100dvh;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .hood-bg__layer {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center 30%;
+      background-repeat: no-repeat;
+      opacity: 0;
+      transition: opacity 1.1s ease;
+      will-change: opacity;
+      transform: scale(1.06);
+    }
+    .hood-bg__layer.is-active {
+      opacity: 1;
+      transform: scale(1);
+      transition: opacity 1.1s ease, transform 8s ease-out;
+    }
+    .hood-bg__layer--1 { background-image: url('/assets/images/hood-cleaning/dirty-hood-heavy-grease.webp'); }
+    .hood-bg__layer--2 { background-image: url('/assets/images/hood-cleaning/hood2.webp'); background-position: center 40%; }
+    .hood-bg__layer--3 { background-image: url('/assets/images/hood-cleaning/hood4.webp'); background-position: center 35%; }
+    .hood-bg__layer--4 { background-image: url('/assets/images/hood-cleaning/clean-hood-interior.webp'); }
+    .hood-bg__layer--5 { background-image: url('/assets/images/hood-cleaning/hood6.webp'); background-position: center 45%; }
+    .hood-bg__veil {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(8,11,16,.72) 0%, rgba(8,11,16,.78) 40%, rgba(8,11,16,.88) 100%),
+        radial-gradient(ellipse 80% 50% at 50% 20%, rgba(224,126,27,.08), transparent 60%);
+    }
+
+    .hood-scroll > :not(.hood-bg) { position: relative; z-index: 1; }
+
+    .hood-scroll .svc-hero,
+    .hood-scroll .section {
+      background: transparent !important;
+    }
+    .hood-scroll .section--alt {
+      background: rgba(255,255,255,.03) !important;
+    }
+    .hood-scroll .svc-cta {
+      background: rgba(8,11,16,.55);
+      backdrop-filter: blur(6px);
+    }
+
+    /* Soft section enter */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(1.25rem);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    [data-reveal].is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Proof strip — before/after hero visual */
+    .proof-strip {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      max-width: 56rem;
+      margin: 2rem auto 0;
+    }
+    @media (min-width: 720px) {
+      .proof-strip { grid-template-columns: 1.2fr 1fr; align-items: stretch; }
+    }
+    .proof-strip__main,
+    .proof-strip__side {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(0,0,0,.35);
+    }
+    .proof-strip__main img,
+    .proof-strip__side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      aspect-ratio: 4/3;
+    }
+    .proof-strip__side { display: grid; grid-template-rows: 1fr 1fr; gap: 1rem; }
+    .proof-strip__side figure { margin: 0; height: 100%; overflow: hidden; border-radius: var(--radius-lg); border: 1px solid rgba(255,255,255,.1); }
+    .proof-strip__side img { aspect-ratio: auto; min-height: 140px; }
+
+    .gallery--hood figcaption {
+      background: rgba(8,11,16,.9);
+    }
+
+    @media (max-width: 768px) {
+      .hood-bg__layer { transform: none; }
+      .hood-bg__layer.is-active { transform: none; transition: opacity .8s ease; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hood-bg__layer,
+      .hood-bg__layer.is-active,
+      [data-reveal] {
+        transition: none !important;
+        transform: none !important;
+      }
+      [data-reveal] { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="top-bar">
+    <div class="container top-bar__inner">
+      <div class="top-bar__contact">
+        <a href="mailto:info@dirtydeedsservices.com" class="top-bar__link">info@dirtydeedsservices.com</a>
+        <a href="tel:+15174140269" class="top-bar__link top-bar__phone">(517) 414-0269</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-main">
+      <a href="/" class="logo logo--img" aria-label="Dirty Deeds Services home">
+        <img src="/assets/images/logo/logo-light.webp" alt="Dirty Deeds Services" class="logo__img" width="130" height="60">
+      </a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" id="nav-toggle" aria-label="Open menu">
+        <span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span>
+      </button>
+      <nav class="nav" id="site-nav" aria-label="Primary">
+        <ul class="nav__list" role="list">
+          <li class="nav__item nav__item--has-sub">
+            <button class="nav__trigger" aria-expanded="false">Kitchen Cleaning</button>
+            <ul class="nav__sub" role="list">
+              <li><a href="/kitchen-cleaning/hood-system-cleaning/" aria-current="page">Hood Cleaning</a></li>
+              <li><a href="/kitchen-cleaning/filter-cleaning-exchange-services/">Filter Cleaning &amp; Exchange</a></li>
+              <li><a href="/kitchen-cleaning/kitchen-appliance-cleaning-services/">Equipment Deep Cleaning</a></li>
+              <li><a href="/kitchen-cleaning/grease-containment-kitchen-maintenance/">Grease Containment</a></li>
+            </ul>
+          </li>
+          <li class="nav__item"><a href="/multi-location/">Multi-Location</a></li>
+          <li class="nav__item"><a href="/industries-and-areas-we-serve/">Who We Serve</a></li>
+          <li class="nav__item"><a href="/about/">About</a></li>
+          <li class="nav__item"><a href="/#contact">Contact</a></li>
+        </ul>
+        <a href="/free-inspection/" class="btn btn--nav-cta">Free Inspection</a>
+        <div class="footer__social" aria-label="Social media">
+          <a href="https://www.facebook.com/servicesbydirtydeeds/" class="social-link social-link--facebook" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg class="social-link__icon" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#0866FF"/><path fill="#fff" d="M13.5 22v-8.57h2.91l.55-3.43H13.5v-2.11c0-.94.46-1.85 1.94-1.85H17V3.95s-1.29-.22-2.53-.22c-2.58 0-4.27 1.56-4.27 4.43v2.47H7.45v3.43h2.75V22h3.3z"/></svg></a>
+          <a href="https://www.instagram.com/servicesbydirtydeeds/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E4405F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+          <a href="https://www.tiktok.com/@dirtydeedsservices" class="social-link social-link--tiktok" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg class="social-link__icon" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="5" fill="#000"/><path fill="#fff" d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9a8.19 8.19 0 0 0 4.78 1.52V7.07a4.85 4.85 0 0 1-1.01-.38z"/></svg></a>
+          <a href="https://www.youtube.com/@DirtyDeedsServices" class="social-link social-link--youtube" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg class="social-link__icon" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="#FF0000" d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/><path fill="#fff" d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <nav class="svc-crumb" aria-label="Breadcrumb">
+      <a href="/">Home</a><span aria-hidden="true">›</span>
+      <span>Kitchen Cleaning</span><span aria-hidden="true">›</span>
+      <span aria-current="page">Hood Cleaning</span>
+    </nav>
+
+    <div class="hood-scroll">
+      <!-- Sticky multi-layer background — crossfades as sections enter view -->
+      <div class="hood-bg" aria-hidden="true">
+        <div class="hood-bg__layer hood-bg__layer--1 is-active" data-bg="0"></div>
+        <div class="hood-bg__layer hood-bg__layer--2" data-bg="1"></div>
+        <div class="hood-bg__layer hood-bg__layer--3" data-bg="2"></div>
+        <div class="hood-bg__layer hood-bg__layer--4" data-bg="3"></div>
+        <div class="hood-bg__layer hood-bg__layer--5" data-bg="4"></div>
+        <div class="hood-bg__veil"></div>
+      </div>
+
+      <!-- SCENE 0 — Hero -->
+      <section class="svc-hero" aria-labelledby="svc-h1" data-scene="0">
+        <div class="svc-hero__inner" data-reveal>
+          <p class="svc-hero__eyebrow">Hood Cleaning Service</p>
+          <h1 class="svc-hero__title" id="svc-h1">Professional Kitchen Hood Cleaning That Keeps You Safe, Compliant, and Running</h1>
+          <p class="svc-hero__lead">We remove grease from your entire exhaust system — not just what's visible — so you avoid fire hazards, failed inspections, and costly problems.</p>
+          <div class="svc-hero__actions">
+            <a href="/free-inspection/" class="btn btn--fire btn--lg">Get a Free Inspection</a>
+            <a href="/google-ads-restaurants/" class="btn btn--ghost btn--lg">Get a Fast Quote</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCENE 1 — Problem -->
+      <section class="section" aria-labelledby="problem-heading" data-scene="1">
+        <div class="container" data-reveal>
+          <h2 class="svc-split-title" id="problem-heading">Most Hood Cleanings Don't Actually Solve the Problem</h2>
+          <div class="reviews-split">
+            <div class="reviews-split__text">
+              <div class="content-block content-block--left" style="text-align:left;">
+                <p>A lot of companies clean what's easy to reach, skip hidden areas, don't document anything, and leave grease behind.</p>
+                <p>So everything looks clean… but the real risk is still there. And that's what causes fires, failed inspections, and expensive issues later.</p>
+              </div>
+            </div>
+            <div class="reviews-split__image">
+              <img src="/assets/images/hood-cleaning/dirty-hood-grease.webp" alt="Heavy grease buildup inside a commercial kitchen hood" class="img-responsive" loading="lazy" width="640" height="480">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCENE 2 — What's included + why it matters -->
+      <section class="section section--alt" aria-labelledby="included-heading" data-scene="2">
+        <div class="container" data-reveal>
+          <h2 class="svc-split-title" id="included-heading">What's Included in Our Hood Cleaning Service</h2>
+          <div class="svc-checklist-wrap">
+            <h3>Core Service Includes</h3>
+            <ul class="svc-checklist" role="list">
+              <li>Hood Interior &amp; Exterior Cleaning</li>
+              <li>Ductwork Cleaning (Accessible Areas)</li>
+              <li>Exhaust Fan Cleaning</li>
+              <li>Grease Removal from System Components</li>
+              <li>Filter Cleaning (if applicable)</li>
+              <li>Before &amp; After Photo Documentation</li>
+              <li>Service Report for Your Records</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="matters-heading" data-scene="2">
+        <div class="container" data-reveal>
+          <h2 class="svc-split-title" id="matters-heading">Why Proper Hood Cleaning Is Critical</h2>
+          <div class="content-block">
+            <p>Your exhaust system is one of the biggest risk points in your kitchen. Grease buildup can lead to:</p>
+            <ul class="bullet-list">
+              <li>Fire hazards</li>
+              <li>Reduced airflow and performance</li>
+              <li>Failed inspections</li>
+              <li>Damage to equipment</li>
+            </ul>
+            <p style="margin-top:1.25rem;">Regular, proper cleaning isn't optional — it's necessary.</p>
+          </div>
+          <ul class="svc-benefits" role="list" style="margin-top:2rem;">
+            <li class="svc-benefit"><h3>NFPA-Aligned Service</h3><p>We clean accessible areas thoroughly, flag problem spots, and document system condition so you're never guessing.</p></li>
+            <li class="svc-benefit"><h3>Full Exhaust Focus</h3><p>Hood, ducts, and fans — not just the shiny surfaces. Hidden grease is where the real risk lives.</p></li>
+            <li class="svc-benefit"><h3>Photo Proof</h3><p>Before and after documentation on every job so you can see exactly what was done.</p></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- SCENE 3 — Proof / gallery -->
+      <section class="section section--alt" aria-labelledby="proof-heading" data-scene="3">
+        <div class="container" data-reveal>
+          <h2 class="svc-split-title" id="proof-heading">You'll See the Difference</h2>
+          <div class="content-block">
+            <p>We don't expect you to take our word for it. Every job includes before photos, after photos, and clear documentation. You'll know exactly what was done.</p>
+          </div>
+
+          <div class="proof-strip">
+            <figure class="proof-strip__main">
+              <img src="/assets/images/hood-cleaning/hood-before-after.webp" alt="Commercial hood interior before and after cleaning" loading="lazy" width="800" height="600">
+            </figure>
+            <div class="proof-strip__side">
+              <figure>
+                <img src="/assets/images/hood-cleaning/dirty-hood-heavy-grease.webp" alt="Grease-laden commercial hood before service" loading="lazy" width="400" height="300">
+              </figure>
+              <figure>
+                <img src="/assets/images/hood-cleaning/clean-hood-suppression.webp" alt="Clean hood with fire suppression nozzles after service" loading="lazy" width="400" height="300">
+              </figure>
+            </div>
+          </div>
+
+          <div class="gallery gallery--hood" style="margin-top:2rem;" role="list">
+            <figure class="gallery__item" role="listitem">
+              <img src="/assets/images/hood-cleaning/hood1.webp" alt="Commercial kitchen hood cleaning in progress" loading="lazy" width="400" height="300">
+              <figcaption>Hood service</figcaption>
+            </figure>
+            <figure class="gallery__item" role="listitem">
+              <img src="/assets/images/hood-cleaning/hood3.webp" alt="Cleaned commercial exhaust hood interior" loading="lazy" width="400" height="300">
+              <figcaption>Hood interior</figcaption>
+            </figure>
+            <figure class="gallery__item" role="listitem">
+              <img src="/assets/images/hood-cleaning/hood5.webp" alt="Exhaust system after professional cleaning" loading="lazy" width="400" height="300">
+              <figcaption>System detail</figcaption>
+            </figure>
+            <figure class="gallery__item" role="listitem">
+              <img src="/assets/images/fan-before-after.webp" alt="Rooftop exhaust fan before and after cleaning" loading="lazy" width="400" height="300">
+              <figcaption>Exhaust fan — before &amp; after</figcaption>
+            </figure>
+            <figure class="gallery__item" role="listitem">
+              <img src="/assets/images/work/technician-duct-cleaning.webp" alt="Technician cleaning inside kitchen exhaust duct" loading="lazy" width="400" height="300">
+              <figcaption>Duct cleaning</figcaption>
+            </figure>
+            <figure class="gallery__item" role="listitem">
+              <img src="/assets/images/work/rooftop-exhaust-cleaning.webp" alt="Crew cleaning rooftop exhaust fan at night" loading="lazy" width="400" height="300">
+              <figcaption>Rooftop fan service</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCENE 4 — Who it's for + add-ons -->
+      <section class="section" aria-labelledby="addons-heading" data-scene="4">
+        <div class="container" data-reveal>
+          <h2 class="svc-split-title" id="addons-heading">Additional Services Available</h2>
+          <div class="content-block">
+            <p>We can also take care of:</p>
+            <ul class="bullet-list">
+              <li>Filter Swap Programs</li>
+              <li>Tile &amp; Grout Cleaning</li>
+              <li>Equipment Deep Cleaning (ovens, fryers, flattops)</li>
+            </ul>
+            <p style="margin-top:1.25rem;">Keep your entire kitchen clean — not just the hood.</p>
+          </div>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:1.5rem;">
+            <a href="/kitchen-cleaning/filter-cleaning-exchange-services/" class="btn btn--ghost">Filter Cleaning &amp; Exchange</a>
+            <a href="/kitchen-cleaning/kitchen-appliance-cleaning-services/" class="btn btn--ghost">Equipment Deep Cleaning</a>
+            <a href="/kitchen-cleaning/grease-containment-kitchen-maintenance/" class="btn btn--ghost">Grease Containment</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--alt" aria-labelledby="for-heading" data-scene="4">
+        <div class="container" data-reveal>
+          <h2 class="svc-split-title" id="for-heading">Built for High-Output Kitchens</h2>
+          <p class="section__subtitle">This service is ideal for:</p>
+          <ul class="why-grid" role="list">
+            <li class="why-card"><h3>Restaurants</h3></li>
+            <li class="why-card"><h3>Franchise Locations</h3></li>
+            <li class="why-card"><h3>Commercial Kitchens</h3></li>
+            <li class="why-card"><h3>Schools &amp; Universities</h3></li>
+            <li class="why-card"><h3>Hospitals &amp; Healthcare</h3></li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="svc-cta">
+        <div class="container" data-reveal>
+          <h2>Get Your Hood System Handled the Right Way</h2>
+          <p>Stop dealing with grease buildup, unreliable vendors, and uncertainty.</p>
+          <div class="svc-cta__actions">
+            <a href="/free-inspection/" class="btn btn--fire btn--lg">Get a Free Inspection</a>
+            <a href="/google-ads-restaurants/" class="btn btn--ghost btn--lg">Get a Fast Quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="/" class="logo logo--img" aria-label="Dirty Deeds Services home">
+          <img src="/assets/images/logo/logo-light.webp" alt="Dirty Deeds Services" class="logo__img" width="130" height="60">
+        </a>
+        <p class="footer__tagline">Professional kitchen hood cleaning for Michigan commercial kitchens.</p>
+        <div class="footer__social" aria-label="Social media">
+          <a href="https://www.facebook.com/servicesbydirtydeeds/" class="social-link social-link--facebook" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg class="social-link__icon" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#0866FF"/><path fill="#fff" d="M13.5 22v-8.57h2.91l.55-3.43H13.5v-2.11c0-.94.46-1.85 1.94-1.85H17V3.95s-1.29-.22-2.53-.22c-2.58 0-4.27 1.56-4.27 4.43v2.47H7.45v3.43h2.75V22h3.3z"/></svg></a>
+          <a href="https://www.instagram.com/servicesbydirtydeeds/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E4405F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+          <a href="https://www.tiktok.com/@dirtydeedsservices" class="social-link social-link--tiktok" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg class="social-link__icon" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="5" fill="#000"/><path fill="#fff" d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9a8.19 8.19 0 0 0 4.78 1.52V7.07a4.85 4.85 0 0 1-1.01-.38z"/></svg></a>
+          <a href="https://www.youtube.com/@DirtyDeedsServices" class="social-link social-link--youtube" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg class="social-link__icon" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="#FF0000" d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/><path fill="#fff" d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__cols">
+        <nav aria-label="Services">
+          <h3 class="footer__heading">Services</h3>
+          <ul class="footer__links" role="list">
+            <li><a href="/kitchen-cleaning/hood-system-cleaning/">Hood Cleaning</a></li>
+            <li><a href="/kitchen-cleaning/filter-cleaning-exchange-services/">Filter Cleaning &amp; Exchange</a></li>
+            <li><a href="/kitchen-cleaning/kitchen-appliance-cleaning-services/">Equipment Deep Cleaning</a></li>
+            <li><a href="/kitchen-cleaning/grease-containment-kitchen-maintenance/">Grease Containment</a></li>
+            <li><a href="/multi-location/">Multi-Location Programs</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Company">
+          <h3 class="footer__heading">Company</h3>
+          <ul class="footer__links" role="list">
+            <li><a href="/about/">About Us</a></li>
+            <li><a href="/industries-and-areas-we-serve/">Who We Serve</a></li>
+            <li><a href="/free-inspection/">Free Inspection</a></li>
+          </ul>
+        </nav>
+        <address class="footer__contact-col">
+          <h3 class="footer__heading">Contact</h3>
+          <a href="tel:+15174140269" class="footer__contact-link">(517) 414-0269</a>
+          <a href="mailto:info@dirtydeedsservices.com" class="footer__contact-link">info@dirtydeedsservices.com</a>
+          <p style="font-size:.8rem;color:var(--faint);margin-top:.5rem;">24/7 — All Day Every Day</p>
+          <a href="/free-inspection/" class="btn btn--fire footer__cta" style="margin-top:1rem;display:inline-block;">Free Inspection</a>
+        </address>
+      </div>
+    </div>
+    <div class="footer__bottom"><div class="container footer__bottom-inner"><p>&copy; 2026 Dirty Deeds Services. All rights reserved.</p></div></div>
+  </footer>
+
+  <script>
+    (function () {
+      var layers = document.querySelectorAll('.hood-bg__layer');
+      var scenes = document.querySelectorAll('[data-scene]');
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function setBg(index) {
+        layers.forEach(function (layer) {
+          layer.classList.toggle('is-active', Number(layer.getAttribute('data-bg')) === index);
+        });
+      }
+
+      if (!reduceMotion && 'IntersectionObserver' in window && scenes.length) {
+        var ratios = {};
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            var key = entry.target.getAttribute('data-scene');
+            ratios[key] = entry.isIntersecting ? entry.intersectionRatio : 0;
+          });
+          var best = '0';
+          var bestRatio = -1;
+          Object.keys(ratios).forEach(function (k) {
+            if (ratios[k] > bestRatio) {
+              bestRatio = ratios[k];
+              best = k;
+            }
+          });
+          setBg(Number(best));
+        }, { threshold: [0, 0.15, 0.35, 0.55, 0.75] });
+
+        scenes.forEach(function (el) { io.observe(el); });
+      }
+
+      var revealIo = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-visible');
+            revealIo.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('[data-reveal]').forEach(function (el) {
+        if (reduceMotion) el.classList.add('is-visible');
+        else revealIo.observe(el);
+      });
+    })();
+  </script>
+  <script src="/assets/js/script.js" defer></script>
+</body>
+</html>
