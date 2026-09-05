@@ -80,6 +80,10 @@
     .ff__input::placeholder { color: rgba(255,255,255,.2); }
     .btn--submit { border: none; cursor: pointer; justify-content: center; font-size: 1.05rem; padding-block: 1rem; margin-top: .25rem; width: 100%; letter-spacing: .03em; }
     .ff__note { font-size: .75rem; color: var(--faint); text-align: center; margin-top: .875rem; line-height: 1.5; }
+    .ff__input:invalid:not(:placeholder-shown) { border-color: #e05555; }
+    .ff__input.is-invalid { border-color: #e05555; box-shadow: 0 0 0 3px rgba(224,85,85,.15); }
+    .ff__error { font-size: .78rem; color: #e88; min-height: 1.1em; margin-top: -.15rem; }
+    .ff__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
     /* ── Trust bar ── */
     .fi-trust { background: var(--bg-surface); border-bottom: 1px solid var(--border); padding: .65rem 1rem; }
@@ -167,15 +171,17 @@
           <div class="fi-card">
             <h2 class="fi-card__title">Schedule Your Free Inspection</h2>
             <p class="fi-card__sub">Takes less than 30 seconds. We'll be in touch within 1 business day.</p>
-            <form action="https://formsubmit.co/info@dirtydeedsservices.com" method="POST" class="ff" id="inspection-form">
+            <form action="/process-inspection.php" method="POST" class="ff" id="inspection-form">
               <div class="ff__row">
                 <div class="ff__group">
                   <label for="name" class="ff__label">Name</label>
-                  <input type="text" id="name" name="name" class="ff__input" placeholder="Your name" required autocomplete="name">
+                  <input type="text" id="name" name="name" class="ff__input" placeholder="Your name" required autocomplete="name" minlength="2" aria-describedby="name-error">
+                  <p class="ff__error" id="name-error" aria-live="polite"></p>
                 </div>
                 <div class="ff__group">
                   <label for="phone" class="ff__label">Phone</label>
-                  <input type="tel" id="phone" name="phone" class="ff__input" placeholder="(555) 000-0000" required autocomplete="tel">
+                  <input type="tel" id="phone" name="phone" class="ff__input" placeholder="(555) 000-0000" required autocomplete="tel" inputmode="numeric" maxlength="14" aria-describedby="phone-error">
+                  <p class="ff__error" id="phone-error" aria-live="polite"></p>
                 </div>
               </div>
               <div class="ff__group">
@@ -184,7 +190,8 @@
               </div>
               <div class="ff__group">
                 <label for="email" class="ff__label">Email</label>
-                <input type="email" id="email" name="email" class="ff__input" placeholder="you@business.com" required autocomplete="email">
+                <input type="email" id="email" name="email" class="ff__input" placeholder="you@business.com" required autocomplete="email" aria-describedby="email-error">
+                <p class="ff__error" id="email-error" aria-live="polite"></p>
               </div>
               <div class="ff__row">
                 <div class="ff__group">
@@ -200,10 +207,7 @@
                 <label for="message" class="ff__label">Message <span style="font-weight:400;text-transform:none;letter-spacing:0;">(optional)</span></label>
                 <textarea id="message" name="message" class="ff__input" rows="2" placeholder="Anything we should know?"></textarea>
               </div>
-              <input type="hidden" name="_subject" value="Free Inspection Request — Dirty Deeds Services">
-              <input type="hidden" name="_template" value="table">
-              <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_next" value="https://dirtydeedsservices.com/thank-you/">
+              <input type="text" name="_honey" class="ff__hp" tabindex="-1" autocomplete="off" aria-hidden="true">
               <button type="submit" class="btn btn--fire btn--submit">Book My Free Inspection →</button>
               <p class="ff__note">🔒 Your info is never shared &nbsp;·&nbsp; No obligation to book</p>
             </form>
@@ -284,10 +288,80 @@
       document.querySelectorAll('[data-reveal],[data-reveal-group]').forEach(function(el){ io.observe(el); });
     })();
 
-    document.getElementById('inspection-form').addEventListener('submit', function(){
-      var b = this.querySelector('.btn--submit');
-      b.disabled = true; b.textContent = 'Sending…'; b.style.opacity = '.7';
-    });
+    (function () {
+      var form = document.getElementById('inspection-form');
+      var nameEl = document.getElementById('name');
+      var phoneEl = document.getElementById('phone');
+      var emailEl = document.getElementById('email');
+
+      function setError(el, errorId, message) {
+        el.classList.add('is-invalid');
+        document.getElementById(errorId).textContent = message;
+      }
+      function clearError(el, errorId) {
+        el.classList.remove('is-invalid');
+        document.getElementById(errorId).textContent = '';
+      }
+
+      // If the server bounced the submission back (e.g. JS was
+      // disabled or bypassed), surface which fields it flagged.
+      var params = new URLSearchParams(window.location.search);
+      var serverErrors = params.get('error');
+      if (serverErrors === 'send_failed') {
+        var note = document.querySelector('.ff__note');
+        if (note) note.textContent = '⚠️ Something went wrong sending your request — please call us instead at (517) 414-0269.';
+      } else if (serverErrors) {
+        serverErrors.split(',').forEach(function (field) {
+          if (field === 'name') setError(nameEl, 'name-error', 'Enter your full name.');
+          if (field === 'phone') setError(phoneEl, 'phone-error', 'Enter a 10-digit US phone number.');
+          if (field === 'email') setError(emailEl, 'email-error', 'Enter a valid email address.');
+        });
+      }
+
+      // Live-format phone as the user types: (555) 123-4567
+      phoneEl.addEventListener('input', function () {
+        var digits = phoneEl.value.replace(/\D/g, '').slice(0, 10);
+        var out = digits;
+        if (digits.length > 6) out = '(' + digits.slice(0,3) + ') ' + digits.slice(3,6) + '-' + digits.slice(6);
+        else if (digits.length > 3) out = '(' + digits.slice(0,3) + ') ' + digits.slice(3);
+        else if (digits.length > 0) out = '(' + digits;
+        phoneEl.value = out;
+        clearError(phoneEl, 'phone-error');
+      });
+
+      function validate() {
+        var ok = true;
+
+        if (nameEl.value.trim().length < 2) {
+          setError(nameEl, 'name-error', 'Enter your full name.');
+          ok = false;
+        } else clearError(nameEl, 'name-error');
+
+        var phoneDigits = phoneEl.value.replace(/\D/g, '');
+        if (phoneDigits.length !== 10) {
+          setError(phoneEl, 'phone-error', 'Enter a 10-digit US phone number.');
+          ok = false;
+        } else clearError(phoneEl, 'phone-error');
+
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim())) {
+          setError(emailEl, 'email-error', 'Enter a valid email address.');
+          ok = false;
+        } else clearError(emailEl, 'email-error');
+
+        return ok;
+      }
+
+      form.addEventListener('submit', function (e) {
+        if (!validate()) {
+          e.preventDefault();
+          var firstInvalid = form.querySelector('.is-invalid');
+          if (firstInvalid) firstInvalid.focus();
+          return;
+        }
+        var b = this.querySelector('.btn--submit');
+        b.disabled = true; b.textContent = 'Sending…'; b.style.opacity = '.7';
+      });
+    })();
 
     document.querySelectorAll('a[href^="#"]').forEach(function(a){
       a.addEventListener('click', function(e){
