@@ -24,6 +24,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Rewrite absolute paths for GitHub Pages subpath
+        run: |
+          find . -type f \( -name "*.html" -o -name "*.css" \) -not -path "./.git/*" -print0 \
+            | xargs -0 sed -i \
+              -e 's#\(href="\)/#\1/DDS-Website/#g' \
+              -e 's#\(src="\)/#\1/DDS-Website/#g' \
+              -e 's#\(action="\)/#\1/DDS-Website/#g' \
+              -e "s#\(url('\)/#\1/DDS-Website/#g"
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
